@@ -1,0 +1,34 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"GT-Sph1Nkf\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Approval</span>\",\"col\":12}},{\"id\":\"VIwsDAAFdG\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Pending Approval\",\"col\":4}}]",
+ "creation": "2024-11-20 17:08:05.954704",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "check",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Approval",
+ "links": [],
+ "modified": "2024-11-20 17:27:03.687227",
+ "modified_by": "Administrator",
+ "module": "Approval App",
+ "name": "Approval",
+ "number_cards": [
+  {
+   "label": "Pending Approval",
+   "number_card_name": "Pending Approval"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 39.0,
+ "shortcuts": [],
+ "title": "Approval"
+}
