@@ -37,6 +37,12 @@ frappe.pages['approval-app'].on_page_load = function (wrapper) {
 		let header = `<div class="form-group">
 			<label for="search">Search Approvals:</label>
 			<input type="text" id="search" class="form-control" placeholder="Search by name...">
+
+			<label for="search_doc">Search Document Type:</label>
+			<input type="text" id="search_doc" class="form-control" placeholder="Search by Document Type...">
+
+			<label for="search_state">Search Workflow State:</label>
+			<input type="text" id="search_state" class="form-control" placeholder="Search by Workflow State...">
 		</div>`;
 	
 		// Create a table
@@ -80,6 +86,24 @@ frappe.pages['approval-app'].on_page_load = function (wrapper) {
 	
 		// Add search functionality
 		document.getElementById('search').addEventListener('input', function () {
+			let filter = this.value.toLowerCase();
+			let rows = document.querySelectorAll('#approvals-table tbody tr');
+			rows.forEach(row => {
+				let text = row.textContent.toLowerCase();
+				row.style.display = text.includes(filter) ? '' : 'none';
+			});
+		});
+
+		document.getElementById('search_state').addEventListener('input', function () {
+			let filter = this.value.toLowerCase();
+			let rows = document.querySelectorAll('#approvals-table tbody tr');
+			rows.forEach(row => {
+				let text = row.textContent.toLowerCase();
+				row.style.display = text.includes(filter) ? '' : 'none';
+			});
+		});
+
+		document.getElementById('search_doc').addEventListener('input', function () {
 			let filter = this.value.toLowerCase();
 			let rows = document.querySelectorAll('#approvals-table tbody tr');
 			rows.forEach(row => {

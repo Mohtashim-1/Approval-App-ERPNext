@@ -14,7 +14,7 @@ def get_pending_approvals():
             SELECT 1 
             FROM `tabWorkflow Action` t2
             WHERE t1.reference_name = t2.reference_name
-            AND t2.workflow_state IN ("Approved", "For Approval", "Returned", "Checking Complete")
+            AND t2.workflow_state IN ("Approved", "Returned", "Checking Complete","Draft","Pending Return Approval","Pending Checking")
         )
     """, as_dict=True)
     return attendance_adjustment
