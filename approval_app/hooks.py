@@ -9,6 +9,10 @@ app_license = "mit"
 # Includes in <head>
 # ------------------
 
+website_routes = [
+    {"from_route": "/approval-app/<reference_doctype>/<reference_name>", "to_route": "approval-app"}
+]
+
 # include js, css files in header of desk.html
 # app_include_css = "/assets/approval_app/css/approval_app.css"
 # app_include_js = "/assets/approval_app/js/approval_app.js"

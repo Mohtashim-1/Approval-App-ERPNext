@@ -1,34 +1,36 @@
-frappe.pages['approval-app'].on_page_load = function(wrapper) {
+frappe.pages['approval-app'].on_page_load = function (wrapper) {
     var page = frappe.ui.make_app_page({
         parent: wrapper,
         title: 'Approval App',
-        single_column: true
+        single_column: true,
     });
 
-    // Add the refresh button
     let $btn = page.set_secondary_action('Refresh', () => refresh(), 'octicon octicon-sync');
+
+    // Extract route parameters
+    const route = frappe.get_route();
+    const reference_doctype = route[1]; // Reference Doctype
+    const reference_name = route[2]; // Reference Name
 
     // Function to refresh or reload data
     function refresh() {
-        adj();  // Call the function that loads the pending approvals
+        adj();
     }
 
-    // Function to fetch pending approvals via server-side method
-    let adj = function() {
+    // Function to fetch pending approvals
+    let adj = function () {
         frappe.call({
-			method: "approval_app.approval_app.page.approval_app.approval_app.get_pending_approvals",  // Adjusted path
-			callback: function(r) {
-				if (r.message) {
-					console.log("Pending Approvals:", r.message);
-					// Handle the data here
-				}
-			}
-		});
+            method: 'approval_app.approval_app.page.approval_app.approval_app.get_pending_approvals',
+            callback: function (r) {
+                if (r.message) {
+                    display_approvals(r.message);
+                }
+            },
+        });
     };
 
-    // Function to display pending approvals in the UI
+    // Function to display approvals
     function display_approvals(data) {
-		// Clear the page body
 		page.body.empty();
 	
 		// Add a header
@@ -43,19 +45,31 @@ frappe.pages['approval-app'].on_page_load = function(wrapper) {
 				<tr>
 					<th>#</th>
 					<th>Document Name</th>
-					<th>Employee Name</th>
-					<th>Status</th>
+					<th>Reference Name</th>
+					<th>Document Type</th>
+					<th>Workflow State</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>`;
 	
 		// Populate the table rows
 		data.forEach((record, index) => {
+			// Format the document type (lowercase and replace spaces with hyphens)
+			let formatted_doc_type = record["Document Type"].toLowerCase().replace(/\s+/g, '-');
+	
 			table += `<tr>
 				<td>${index + 1}</td>
-				<td>${record.name}</td>
-				<td>${record.employee_name}</td>
-				<td>${record.status || 'Pending'}</td>
+				<td>${record["Document"]}</td>
+				<td>${record["Reference"]}</td>
+				<td>${record["Document Type"]}</td>
+				<td>${record["Workflow State"]}</td>
+				 <td>
+					<a href="/app/${formatted_doc_type}/${record["Reference"]}" 
+					class="btn btn-primary btn-sm" 
+					target="_blank" 
+					rel="noopener noreferrer">Open Document</a>
+				</td>
 			</tr>`;
 		});
 	
@@ -65,7 +79,7 @@ frappe.pages['approval-app'].on_page_load = function(wrapper) {
 		page.body.html(header + table);
 	
 		// Add search functionality
-		document.getElementById('search').addEventListener('input', function() {
+		document.getElementById('search').addEventListener('input', function () {
 			let filter = this.value.toLowerCase();
 			let rows = document.querySelectorAll('#approvals-table tbody tr');
 			rows.forEach(row => {
@@ -74,4 +88,6 @@ frappe.pages['approval-app'].on_page_load = function(wrapper) {
 			});
 		});
 	}
+    // Initial load
+    adj();
 };
