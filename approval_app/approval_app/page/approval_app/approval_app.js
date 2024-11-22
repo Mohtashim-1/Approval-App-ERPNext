@@ -38,7 +38,7 @@ frappe.pages['approval-app'].on_page_load = function (wrapper) {
         page.body.empty();
 
         // Add a header
-        let header = `<div class="form-group">
+        let header = `<div class="form-group" style="display: flex; gap: 10px;">
             <label for="search">Search Approvals:</label>
             <input type="text" id="search" class="form-control" placeholder="Search by name...">
 
