@@ -1,0 +1,41 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-22 17:01:43.201455",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "approval_setting_ct"
+ ],
+ "fields": [
+  {
+   "fieldname": "approval_setting_ct",
+   "fieldtype": "Table",
+   "label": "Approval Setting CT",
+   "options": "Approval Setting CT"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-11-22 17:03:06.859981",
+ "modified_by": "Administrator",
+ "module": "Approval App",
+ "name": "Approval Setting",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
