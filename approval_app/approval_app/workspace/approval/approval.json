@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"GT-Sph1Nkf\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Approval</span>\",\"col\":12}},{\"id\":\"n5mf5hVIYF\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"yruABsGgOL\",\"type\":\"card\",\"data\":{\"card_name\":\"Report\",\"col\":4}},{\"id\":\"VIwsDAAFdG\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Pending Approval\",\"col\":4}}]",
+ "content": "[{\"id\":\"GT-Sph1Nkf\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Approval</span>\",\"col\":12}},{\"id\":\"n5mf5hVIYF\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"xb9N3AUFJ-\",\"type\":\"card\",\"data\":{\"card_name\":\"Approval\",\"col\":4}}]",
  "creation": "2024-11-20 17:08:05.954704",
  "custom_blocks": [],
  "docstatus": 0,
@@ -16,7 +16,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Report",
+   "label": "Approval",
    "link_count": 1,
    "link_type": "DocType",
    "onboard": 0,
@@ -24,25 +24,20 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 1,
-   "label": "Workflow Report",
+   "is_query_report": 0,
+   "label": "Approval Page",
    "link_count": 0,
-   "link_to": "Workflow Report",
-   "link_type": "Report",
+   "link_to": "approval-app",
+   "link_type": "Page",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2024-11-21 16:30:59.467736",
+ "modified": "2024-11-22 19:05:44.821949",
  "modified_by": "Administrator",
  "module": "Approval App",
  "name": "Approval",
- "number_cards": [
-  {
-   "label": "Pending Approval",
-   "number_card_name": "Pending Approval"
-  }
- ],
+ "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
