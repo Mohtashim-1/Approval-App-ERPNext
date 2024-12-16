@@ -1,39 +1,30 @@
 frappe.pages['approval-app'].on_page_load = function (wrapper) {
-    // Ensure 'wrapper' is passed into the function correctly
     var page = frappe.ui.make_app_page({
-        parent: wrapper,    // wrapper is used here
+        parent: wrapper,
         title: 'Approval App',
         single_column: true,
     });
 
     let $btn = page.set_secondary_action('Refresh', () => refresh(), 'octicon octicon-sync');
 
-    // Extract route parameters
-    const route = frappe.get_route();
-    const reference_doctype = route[1]; // Reference Doctype
-    const reference_name = route[2]; // Reference Name
-
-    // Function to refresh or reload data
     function refresh() {
         adj();
     }
 
-    // Function to fetch pending approvals
     let adj = function () {
-		frappe.call({
-			method: 'approval_app.approval_app.page.approval_app.approval_app.get_pending_approvals',
-			callback: function (r) {
-				console.log(r);  // Add this to log the response
-				if (r.message) {
-					display_approvals(r.message);
-				} else {
-					console.error("No data returned from server.");
-				}
-			},
-		});
-	};
+        frappe.call({
+            method: 'approval_app.approval_app.page.approval_app.approval_app.get_pending_approvals',
+            callback: function (r) {
+                console.log(r);
+                if (r.message) {
+                    display_approvals(r.message);
+                } else {
+                    console.error("No data returned from server.");
+                }
+            },
+        });
+    };
 
-    // Function to display approvals
     function display_approvals(data) {
         page.body.empty();
 
@@ -54,10 +45,12 @@ frappe.pages['approval-app'].on_page_load = function (wrapper) {
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Document Name</th>
-                    <th>Reference Name</th>
+                    <th>Creation Date</th>
                     <th>Document Type</th>
                     <th>Workflow State</th>
+                    
+                    <th>Reference Name</th>
+                    
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -69,11 +62,13 @@ frappe.pages['approval-app'].on_page_load = function (wrapper) {
 
             table += `<tr>
                 <td>${index + 1}</td>
-                <td>${record["Document"]}</td>
-                <td>${record["Reference"]}</td>
+                <td>${record["Creation Date"]}</td>
                 <td>${record["Document Type"]}</td>
+                
                 <td>${record["Workflow State"]}</td>
-                 <td>
+                <td>${record["Reference"]}</td>
+                
+                <td>
                     <a href="/app/${formatted_doc_type}/${record["Reference"]}" 
                     class="btn btn-primary btn-sm" 
                     target="_blank" 
@@ -116,6 +111,5 @@ frappe.pages['approval-app'].on_page_load = function (wrapper) {
         });
     }
 
-    // Initial load
     adj();
 };

@@ -8,7 +8,10 @@
  "field_order": [
   "document",
   "column_break_irla",
-  "state"
+  "state",
+  "column_break_zukv",
+  "field",
+  "field1"
  ],
  "fields": [
   {
@@ -34,12 +37,34 @@
    "in_standard_filter": 1,
    "label": "State",
    "options": "Workflow State"
+  },
+  {
+   "fieldname": "field",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Field"
+  },
+  {
+   "fieldname": "column_break_zukv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "field1",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Field1"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-11-22 17:04:01.947912",
+ "modified": "2024-12-13 19:07:37.927471",
  "modified_by": "Administrator",
  "module": "Approval App",
  "name": "Approval Setting CT",
